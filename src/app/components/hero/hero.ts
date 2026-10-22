@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,20 +9,18 @@ import { CommonModule } from '@angular/common';
     <section class="hero">
       <div class="hero-container">
         
-        <!-- Badge de especialidad -->
-        <span class="badge">Angular & Software Developer</span>
+        <span class="badge">Angular Developer & Data Science</span>
 
         <!-- Título principal -->
         <h1 class="name">Jean Bracho</h1>
-        <h2 class="role">Desarrollador de Software</h2>
+        <h2 class="role"><span style="text-decoration: underline;">Técnico</span> en Desarrollo de Software<br>
+        <span style="text-decoration: underline;">Estudiante</span> de Lic. en Tecnologías Digitales</h2>
 
-        <!-- Propuesta de valor breve -->
         <p class="description">
           Especializado en la creación de interfaces web modernas, limpias y reactivas con Angular, 
           integración de APIs REST y análisis de datos.
         </p>
 
-        <!-- Botón CV y Redes principales -->
         <div class="actions">
           <a href="assets/cv.pdf" download class="btn-cv">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -32,13 +30,13 @@ import { CommonModule } from '@angular/common';
           </a>
 
           <div class="social-group">
-            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
+            <a href="https://github.com/jeanbrcho" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
             </a>
 
-            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/jeanbracho" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
@@ -54,6 +52,15 @@ import { CommonModule } from '@angular/common';
         </div>
 
       </div>
+
+      <!-- Toast Flotante -->
+      <div class="toast" [class.show]="copied()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>¡Email copiado al portapapeles!</span>
+      </div>
+
     </section>
   `,
   styles: [`
@@ -64,6 +71,7 @@ import { CommonModule } from '@angular/common';
       padding: 5rem 1.5rem 2rem;
       max-width: 850px;
       margin: 0 auto;
+      position: relative;
     }
 
     .hero-container {
@@ -160,11 +168,52 @@ import { CommonModule } from '@angular/common';
       color: var(--accent);
       background-color: var(--bg-surface-hover);
     }
+
+    /* Estilos del Toast flotante */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--accent);
+      color: var(--text-main);
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px var(--shadow-color);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast svg {
+      color: var(--accent);
+    }
   `]
 })
 export class HeroComponent {
+  copied = signal<boolean>(false);
+
   copyEmail(): void {
-    navigator.clipboard.writeText('tu-email@ejemplo.com');
-    alert('Email copiado al portapapeles');
+    navigator.clipboard.writeText('jeancbs18ar@gmail.com');
+    
+    this.copied.set(true);
+
+    // Oculta la notificación automáticamente a los 1.5 segundos
+    setTimeout(() => {
+      this.copied.set(false);
+    }, 1500);
   }
 }

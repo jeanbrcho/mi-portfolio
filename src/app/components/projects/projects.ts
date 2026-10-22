@@ -272,12 +272,21 @@ export class ProjectsComponent {
   projects: Project[] = [
     {
       id: 'guau-corte',
-      title: 'Guau que corte!',
+      title: '¡Guau que corte!',
       category: 'Plataforma Web',
       summary: 'Sistema web de registro y gestión de turnos comerciales.',
       details: 'Desarrollado con arquitectura Angular Standalone, consumo de servicios REST API y maquetación responsiva orientada a agilizar el flujo de reservas y clientes.',
       stack: ['Angular', 'TypeScript', 'HTML5/CSS3', 'REST API'],
-      githubUrl: 'https://github.com/tu-usuario/guau-que-corte'
+      githubUrl: 'https://github.com/jeanbrcho/guau_que_corte'
+    },
+    {
+      id: 'eduplay-web',
+      title: 'EduPlay',
+      category: 'Juego de aprendizaje infantil',
+      summary: 'Plataforma web interactiva para el incentivo del aprendizaje',
+      details: 'Enfocado en la experiencia de usuario y validaciones en cliente para evitar solapamiento de horarios y optimizar la comunicación con la API.',
+      stack: ['Angular Standalone', 'TypeScript', 'Git'],
+      githubUrl: 'https://github.com/jeanbrcho/FrontEndEduPlay'
     },
     {
       id: 'metar-app',
@@ -286,23 +295,14 @@ export class ProjectsComponent {
       summary: 'Visualizador y decodificador de datos meteorológicos aeronáuticos en tiempo real.',
       details: 'Consume APIs aeronáuticas internacionales para decodificar informes METAR/TAF. Procesa parámetros complejos de clima en interfaces sencillas e intuitivas.',
       stack: ['Angular', 'TypeScript', 'RxJS', 'APIs REST'],
-      githubUrl: 'https://github.com/tu-usuario/metar-app'
-    },
-    {
-      id: 'turnos-web',
-      title: 'Sistema Web de Turnos',
-      category: 'Gestión de Servicios',
-      summary: 'Plataforma interactiva para asignación y control de agenda.',
-      details: 'Enfocado en la experiencia de usuario y validaciones en cliente para evitar solapamiento de horarios y optimizar la comunicación con la API.',
-      stack: ['Angular Standalone', 'TypeScript', 'Git'],
-      githubUrl: 'https://github.com/tu-usuario/sistema-turnos'
+      githubUrl: 'https://github.com/jeanbrcho/Metar_Radar_Proyect'
     },
     {
       id: 'vehiculos-web',
       title: 'Portal de Venta de Vehículos',
-      category: 'E-Commerce / Catalogo',
-      summary: 'Interface moderna con filtros en tiempo real para catálogo automotriz.',
-      details: 'Desarrollo de interfaz dinámica para exploración de vehículos, filtrado multicriterio y catálogo optimizado para dispositivos móviles.',
+      category: 'E-Commerce',
+      summary: 'Interface moderna para promoción e información de venta de autos.',
+      details: 'Desarrollo de interfaz dinámica para exploración de vehículos, optimizado para dispositivos móviles.',
       stack: ['Angular', 'CSS3', 'TypeScript', 'Data Filtering'],
       githubUrl: 'https://github.com/tu-usuario/portal-vehiculos'
     }
