@@ -1,0 +1,170 @@
+/* src/styles.css */
+
+/* Tema Oscuro (Por defecto) */
+:root, [data-theme="dark"] {
+  --bg-main: #0B1530;
+  --bg-surface: #14213F;
+  --bg-surface-hover: #1D2D54;
+  --text-main: #E8EEFF;
+  --text-muted: #94A3B8;
+  --accent: #FFC83D;
+  --accent-contrast: #0B1530;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] {
+  --bg-main: #FFFDF7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F4F0E6;
+  --text-main: #0B1530;
+  --text-muted: #52607D;
+  --accent: #E5A800;
+  --accent-contrast: #FFFFFF;
+  --border-color: rgba(11, 21, 48, 0.1);
+  --shadow-color: rgba(11, 21, 48, 0.08);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+}
+
+/* src/styles.css */
+
+/* Overlay de pantalla completa para la trayectoria orbital */
+/* src/styles.css */
+
+.theme-animation-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Ancho fijo de 95px -> Mitad = 47.5px */
+.sun-orb, .moon-orb {
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+/* Sol: Círculo redondo cálido */
+.sun-orb {
+  background: radial-gradient(circle, #FFE57F 0%, #FFC83D 60%, #E5A800 100%);
+  box-shadow: 0 0 50px rgba(255, 200, 61, 0.8);
+  animation: sunOrbitArc 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Luna: Círculo brillante plateado */
+.moon-orb {
+  background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%);
+  box-shadow: 0 0 45px rgba(226, 232, 240, 0.7);
+  animation: moonOrbitArc 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Sol: Arco de izquierda a derecha centrando el centro del astro */
+@keyframes sunOrbitArc {
+  0% {
+    transform: translate(-30vw, 90vh) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    /* 50vw menos la mitad del tamaño del astro (47.5px) */
+    transform: translate(calc(50vw - 47.5px), 10vh) scale(1.2);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(130vw, 90vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Luna: Arco de derecha a izquierda centrando el centro del astro */
+@keyframes moonOrbitArc {
+  0% {
+    transform: translate(130vw, 90vh) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    /* 50vw menos la mitad del tamaño del astro (47.5px) */
+    transform: translate(calc(50vw - 47.5px), 10vh) scale(1.2);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-30vw, 90vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Optimización de escala para pantallas móviles (ancho menor a 768px) */
+@media (max-width: 768px) {
+  .sun-orb, .moon-orb {
+    width: 75px;
+    height: 75px;
+  }
+
+  @keyframes sunOrbitArc {
+    0% {
+      transform: translate(-35vw, 85vh) scale(0.6);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    50% {
+      /* Mitad de 75px = 37.5px */
+      transform: translate(calc(50vw - 37.5px), 12vh) scale(1.1);
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(135vw, 85vh) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes moonOrbitArc {
+    0% {
+      transform: translate(135vw, 85vh) scale(0.6);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    50% {
+      /* Mitad de 75px = 37.5px */
+      transform: translate(calc(50vw - 37.5px), 12vh) scale(1.1);
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-35vw, 85vh) scale(0.6);
+      opacity: 0;
+    }
+  }
+}
