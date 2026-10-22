@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     <section class="hero">
       <div class="hero-container">
         
-        <span class="badge">Angular Developer & Data Science</span>
+        <span class="badge">Software Developer & Angular Developer</span>
 
         <!-- Título principal -->
         <h1 class="name">Jean Bracho</h1>
