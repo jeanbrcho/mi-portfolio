@@ -69,9 +69,8 @@ import { ThemeService } from '../../services/theme';
       transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     }
 
-    /* En móviles (pantallas <= 768px) al hacer scroll */
-    @media (max-width: 768px) {
-      .toggle-btn.scrolled {
+    /* Colapsa al hacer scroll */
+    .toggle-btn.scrolled {
         padding: 0;
         width: 42px;
         height: 42px;
@@ -84,7 +83,6 @@ import { ThemeService } from '../../services/theme';
         max-width: 0;
         opacity: 0;
       }
-    }
   `]
 })
 export class ThemeToggleComponent {
