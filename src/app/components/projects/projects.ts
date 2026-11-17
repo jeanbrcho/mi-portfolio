@@ -415,7 +415,7 @@ export class ProjectsComponent {
       title: 'EduPlay',
       category: 'Juego de aprendizaje infantil',
       summary: 'Plataforma web interactiva para el incentivo del aprendizaje',
-      details: 'Enfocado en la experiencia de usuario y validaciones en cliente para evitar solapamiento de horarios y optimizar la comunicación con la API.',
+      details: 'Aplicación web educativa enfocada en la experiencia de usuario y la calidad de interfaz. Construida desde cero con Angular (Standalone Components) y TypeScript, implementando flujos interactivos, manejo de estado en el cliente y validaciones reactivas bajo buenas prácticas de desarrollo modular.',
       stack: ['Angular Standalone', 'TypeScript', 'Git'],
       githubUrl: 'https://github.com/jeanbrcho/FrontEndEduPlay',
       images: [

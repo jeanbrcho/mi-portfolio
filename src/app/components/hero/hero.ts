@@ -19,8 +19,7 @@ import { CommonModule } from '@angular/common';
         </h2>
 
         <p class="description">
-          Especializado en la creación de interfaces web modernas, limpias y reactivas con Angular,
-          integración de APIs REST y análisis de datos.
+          Desarrollador Full-Stack con amplia experiencia Frontent y el desarrollo de aplicaciones web modernas, escalables y responsive con Angular y TypeScript, enfocadas en arquitectura de componentes reutilizables, integración de APIs REST y experiencias de usuario.
         </p>
 
         <div class="actions">
@@ -150,7 +149,7 @@ import { CommonModule } from '@angular/common';
         display: flex;
         align-items: center;
         padding: 5rem 1.5rem 2rem;
-        max-width: 850px;
+        max-width: 1020px; /* Antes: 850px */
         margin: 0 auto;
         position: relative;
       }
@@ -159,6 +158,7 @@ import { CommonModule } from '@angular/common';
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%; /* Agregado para que aproveche todo el ancho */
       }
 
       .badge {
@@ -193,7 +193,7 @@ import { CommonModule } from '@angular/common';
         font-size: 1.1rem;
         color: var(--text-muted);
         line-height: 1.6;
-        max-width: 620px;
+        max-width: 780px; /* Antes: 620px */
         margin-bottom: 2rem;
       }
 
