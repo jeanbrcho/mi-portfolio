@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    text {
+      fill: #000000;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 68px;
+      letter-spacing: -3px;
+    }
+    /* Cambia las letras a blanco si la barra del navegador es oscura */
+    @media (prefers-color-scheme: dark) {
+      text { fill: #ffffff; }
+    }
+  </style>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle">JB</text>
+</svg>
